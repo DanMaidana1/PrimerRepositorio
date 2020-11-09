@@ -1,11 +1,20 @@
 const fs = require ('fs');
 
-module.exports = user = {
+module.exports = users = {
     archivo : './users.json',
     leerJson : function(){
-        leer = fs.readFileSync(this.archivo);
-        jsonPaseado = JSON.parse(leer);
+        let leer = fs.readFileSync(this.archivo);
+        let jsonPaseado = JSON.parse(leer);
         return jsonPaseado;
-    }
+    },
+    crearUsuario : function (nombre, mail){
 
+        let nuevoUsuario = {
+            nombre : nombre,
+            mail : mail
+        }
+        let usuariosAnteriores = this.leerJson();
+        usuariosAnteriores.push(nuevoUsuario);
+        console.log(usuariosAnteriores);
+    }
 }
